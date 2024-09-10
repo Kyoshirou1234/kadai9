@@ -4,7 +4,7 @@
 
 ②課題内容（どんな作品か）
 
--　ToDo管理アプリ
+-　ConfirmWork.php：業務内容およびタスク確認
 
 -　AddTask.php：業務ごとのタスクを追加
 
