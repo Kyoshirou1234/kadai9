@@ -1,15 +1,8 @@
 <?php
 // エラー表示
-ini_set("display_errors", 1);
-
+include("function/funcs.php");
+$pdo = ReadDB();
 $mode = "ini";
-
-// 1. DB接続
-try {
-    $pdo = new PDO('mysql:dbname=kadai9;charset=utf8;host=localhost','root','');
-} catch (PDOException $e) {
-    exit('DBError:' . $e->getMessage());
-}
 
 // すべてのタスクを表示する場合
 if (isset($_POST['all'])) {
@@ -111,92 +104,11 @@ else {
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>回答状況</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            padding: 20px;
-            color: #333;
-            margin: 0;
-        }
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .tab {
-            padding: 10px 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background-color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-            text-align: center;
-            font-size: 14px;
-        }
-        .tab:hover {
-            background-color: #f0f0f0;
-        }
-        .tab.active {
-            background-color: #007bff;
-            color: white;
-            border-bottom: 1px solid transparent;
-        }
-        .tab form {
-            display: inline;
-        }
-        .tab input[type="submit"] {
-            background-color: transparent;
-            color: #007bff;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .tab input[type="submit"]:hover {
-            text-decoration: underline;
-        }
-        header {
-            margin-bottom: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        th, td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-            text-align: center;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-        }
-        form {
-            display: inline-block;
-            margin-right: 10px;
-        }
-        input[type="submit"] {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-        select, input[type="date"] {
-            margin-right: 10px;
-            padding: 5px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-    </style>
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
 <header>
-<div class="tabs">
+    <div class="tabs">
         <div class="tab">
             <form action="ConfirmWork.php" method="post">
                 <input type="submit" name="ini" value="業務を確認" />
@@ -208,7 +120,7 @@ else {
             </form>
         </div>
         <div class="tab">
-            <form action="addWork.php" method="post">
+        <form action="AddWork.php" method="post">
                 <input type="submit" value="業務を追加" />
             </form>
         </div>
@@ -223,7 +135,7 @@ else {
             </form>
         </div>
         <div class="tab">
-        <form action="UpdateTask.php" method="post">
+        <form action="UpdateTasks.php" method="post">
                 <input type="submit" name="UpdateTasks" value="タスクの変更" />
             </form>
         </div>
