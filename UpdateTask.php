@@ -4,6 +4,7 @@ ini_set("display_errors", 1);
 
 // DB接続
 try {
+    //$pdo = new PDO('mysql:dbname=tech-27-k_kadai9;charset=utf8;host=mysql57.tech-27-k.sakura.ne.jp', 'tech-27-k', '52P34w57d3');
     $pdo = new PDO('mysql:dbname=kadai9;charset=utf8;host=localhost','root','');
 } catch (PDOException $e) {
     exit('DBError:' . $e->getMessage());

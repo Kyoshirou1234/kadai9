@@ -2,17 +2,11 @@
 ini_set("display_errors", 1);
 
 try {
+    //$pdo = new PDO('mysql:dbname=tech-27-k_kadai9;charset=utf8;host=mysql57.tech-27-k.sakura.ne.jp', 'tech-27-k', '52P34w57d3');
     $pdo = new PDO('mysql:dbname=kadai9;charset=utf8;host=localhost', 'root', '');
 } catch (PDOException $e) {
     exit('DBError: '.$e->getMessage());
 }
-
-// Fetch data for the form
-$stmt_name = $pdo->prepare("SELECT * FROM name");
-$status_name = $stmt_name->execute();
-$values_name = $stmt_name->fetchAll(PDO::FETCH_ASSOC);
-
-$error_message = ''; // Variable for error messages
 
 // Handle form submission
 if (isset($_POST['send'])) {

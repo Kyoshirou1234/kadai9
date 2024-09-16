@@ -2,6 +2,7 @@
 ini_set("display_errors", 1);
 
 try {
+    //$pdo = new PDO('mysql:dbname=tech-27-k_kadai9;charset=utf8;host=mysql57.tech-27-k.sakura.ne.jp', 'tech-27-k', '52P34w57d3');
     $pdo = new PDO('mysql:dbname=kadai9;charset=utf8;host=localhost', 'root', '');
 } catch (PDOException $e) {
     exit('DBError: ' . $e->getMessage());
@@ -34,6 +35,7 @@ if (isset($_POST['select'])) {
     } else {
         exit("No data found for the given workname.");
     }
+}
 
     if (isset($_POST['send'])) {
         $start = $_POST["start"];
@@ -41,6 +43,8 @@ if (isset($_POST['select'])) {
         $task = $_POST["task"];
         $importance = $_POST["importance"];
         $done = $_POST["done"];
+        $tablename = $_POST["tablename"];
+        $id = $_POST["id"];
 
         if (isset($id)) {
             $tablename = "24_" . $id;
@@ -61,7 +65,6 @@ if (isset($_POST['select'])) {
             exit("Table name could not be set due to missing ID.");
         }
     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -230,7 +233,8 @@ if (isset($_POST['select'])) {
                     <!-- Options will be inserted here by JavaScript -->
                 </select>
             </div>
-            <input type="hidden" name="workname" value="<?= htmlspecialchars($workname) ?>">
+            <input type="hidden" name="tablename" value="<?= htmlspecialchars($tablename) ?>">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($id) ?>">
             <input type="submit" name="send" value="登録" />
         </form>
     </div>
